@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="/admin/bootstrap-5.0.2-dist//css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/admin/style/style.css" />
+  </head>
+
+  <body>
+    <div class="global-box">
+      <%- include("../../partials/sidebar") %>
+      <div class="main-box">
+        <div class="header">
+          <%- include("../../partials/header-top") %>
+            <h2 class="text-center lh-lg fs-1">New News</h2>
+           
+          </div>
+<main class="news overflow-scroll">
+          <form
+      class=""
+      action="/admin/news/new-news"
+      method="post"
+      enctype="multipart/form-data"
+    >
+    <% if(errors.length>0){ %> 
+
+      <% for(let i=0;i<errors.length;i++){%>
+       <% const e = errors[i] %>  
+  <p class="error-message"><%= e %> </p>
+  
+        <% } }%> 
+      <label class="form-control d-flex flex-column gap-3 fs-4" for="name" style="margin-bottom: 20px">
+        New Category
+      <label for="title">
+        Title
+      <input class="form-control fs-4" type="text" name="title" placeholder="Title" />
+      </label>
+      <label for="text">
+        Text
+        <textarea
+        class="form-control fs-4"
+        type="text"
+        name="text"
+        rows="10"
+        placeholder="text"
+        id="mytextarea"
+      ></textarea>
+      </label>
+      <label for="brief">
+        Brief
+      <input class="form-control fs-4" type="text" name="brief" placeholder="brief" />
+      </label>
+      <label for="banner">
+        Banner
+      <input class="form-control fs-4" type="file" id="banner" name="banner" />
+      </label>
+      <select class="form-select fs-4" name="categoryId" id="categoryId" value="<%= categories.id %> ">
+        <option value="">Select Category</option>
+        <% categories.forEach((c)=>{%>
+        <option value="<%= c.id %> "><%= c.name %></option>
+        <% }) %>
+      </select>
+
+      <select class="form-select fs-4" name="userId" id="userId">
+        <option value="">Select User</option>
+        <% users.forEach((u)=>{%>
+        <option value="<%= u.id %> "><%= u.firstName %></option>
+        <% }) %>
+      </select>
+      <div class="d-flex gap-4 fs-3">
+        <a href="/admin/news" class="btn btn-danger fs-3" type="button">Cancel</a>
+        <button class="btn btn-primary fs-3">Save</button>
+      </div>
+      </label>
+    </form>
+        </main>
+
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="/admin/bootstrap-5.0.2-dist//js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/script.js"></script>
+    <script
+    src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"
+  ></script>
+
+  <script>
+    tinymce.init({
+      selector: "#mytextarea",
+      plugins: [
+        "a11ychecker",
+        "advlist",
+        "advcode",
+        "advtable",
+        "autolink",
+        "checklist",
+        "export",
+        "lists",
+        "link",
+        "image",
+        "charmap",
+        "preview",
+        "anchor",
+        "searchreplace",
+        "visualblocks",
+        "powerpaste",
+        "fullscreen",
+        "formatpainter",
+        "insertdatetime",
+        "media",
+        "table",
+        "help",
+        "wordcount",
+      ],
+      toolbar:
+        "undo redo | formatpainter casechange blocks | bold italic backcolor | " +
+        "alignleft aligncenter alignright alignjustify | " +
+        "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
+    });
+  </script>
+  </body>
+</html>
+
+
+

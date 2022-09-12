@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/news-blog/style/style.css" />
+    <title>News Blog</title>
+  </head>
+
+  <body>
+    <nav class="nav">
+      <div class="container nav-content">
+        <img src="news-blog/img/logo.png" alt="" class="nav__logo" />
+        <ul class="nav-list">
+          <% allCategories.forEach((c)=>{ %>
+          <li class="nav-list__item">
+            <a href="/news/<%= c.name %> /<%= c.id %> " class="nav-list__link"
+              ><%= c.name %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+        <button class="btn btn-search">
+          <ion-icon name="search-outline" class="btn-search-icon"></ion-icon>
+        </button>
+      </div>
+    </nav>
+
+    <section class="section-hero">
+      <div class="container grid grid-2-cols u-align-center u-gap--big">
+        <div class="hero-img-box">
+          <img
+            class="hero__img"
+            src="news-blog/img/hero.png"
+            alt="Lemon, sliced lemon, lemon cake"
+          />
+        </div>
+        <div class="hero-text-box">
+          <h2 class="hero__title">
+            Cake meme reflects coronavirus absurdity in a world where nothing is
+            what it seems
+          </h2>
+          <p class="hero__text">
+            Earlier this month, a viral video depicting hyper-realistic cakes as
+            everyday items had folks on social media double-guessing every other
+            post, and sometimes even their own realities, effectively launching
+            the next meme : “Is this real or is this cake?”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-news">
+      <div class="container">
+        <div class="grid grid-3-cols u-gap-h--small u-gap-v--small">
+          
+          <% allNews.forEach((n)=>{ %> 
+          <div class="news-card">
+            <div class="news-card__img-box">
+              <a href="/<%= n.id %> ">
+                <img
+                src="/uploader/<%= n.banner %> "
+                alt="Banner 1"
+                class="news-card__img"
+              /></a>
+            </div>
+            <div class="news-card__body">
+              <a href="/<%= n.id %> ">
+                <h3 class="news-card__title">
+                  <%= n.title %> 
+                </h3></a>
+              <p class="news-card__brief">
+                <%= n.brief %> 
+              </p>
+            </div>
+            <div class="news-card__bottom-line">
+              <span><%= n.createdAt.toLocaleString() %> </span>
+              <span class="news-card__bottom-line__author"
+                ><%= users.lastName %>  | 4min read</span
+              >
+            </div>
+          </div>
+<% }) %> 
+    
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <script src="./script.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="/admin/bootstrap-5.0.2-dist//css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/admin/style/style.css" />
+  </head>
+
+  <body>
+    <div class="global-box">
+      <%- include("../../partials/sidebar") %>
+      <div class="main-box">
+        <div class="header">
+          <%- include("../../partials/header-top") %>
+          <div class="header-bottom d-flex justify-content-end gap-5 zIndex">
+            <form class="d-flex justify-content-between gap-4" action="#">
+              <input type="search" name="" id="" class="form-control fs-4" />
+              <button class="btn btn-info fs-4">Search</button>
+            </form>
+            <a
+              href="/admin/news/new-news"
+              class="btn btn-primary fs-4 text-decoration-none"
+              >Add News</a
+            >
+          </div>
+        </div>
+        <main class="news">
+          <table class="table table-striped fs-4">
+            <% if(errors.length>0){ %> 
+
+              <% for(let i=0;i<errors.length;i++){%>
+               <% const e = errors[i] %>  
+          <p class="error-message"><%= e %> </p>
+          
+                <% } }%>
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>New Title</th>
+                <th>New's User</th>
+                <th>Edit New</th>
+                <th>Delete New</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% allNews.forEach((t,i)=>{ %>
+              <tr>
+                <td><%= i+1%></td>
+                <td>
+                  <a
+                    class="a-el btn btn-primary"
+                    href="/admin/news/byId/<%= t.id %> "
+                  >
+                    <%= t.title %>
+                  </a>
+                </td>
+                <td><a class="a-el btn btn-primary" href="#"> Anna </a></td>
+                <td>
+                  <a
+                    class="a-el btn btn-primary"
+                    href="/admin/news/edit-news/<%= t.id %>"
+                  >
+                    Edit
+                  </a>
+                </td>
+                <td>
+                  <a
+                    class="a-el btn btn-danger"
+                    href="/admin/news/delete/<%= t.id %>"
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+
+              <% }) %>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+
+    <script src="/admin/bootstrap-5.0.2-dist//js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="/admin/bootstrap-5.0.2-dist//css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/admin/style/style.css" />
+  </head>
+
+  <body>
+    <div class="global-box">
+      <%- include("../../partials/sidebar") %>
+      <div class="main-box">
+        <div class="header">
+          <%- include("../../partials/header-top") %>
+          <div class="header-bottom d-flex justify-content-end gap-5 zIndex">
+            <form class="d-flex justify-content-between gap-4" action="#">
+              <input type="search" name="" id="" class="form-control fs-4" />
+              <button class="btn btn-info fs-4">Search</button>
+            </form>
+            <a
+              href="/admin/users/new"
+              class="btn btn-primary fs-4 text-decoration-none"
+              >Add User</a
+            >
+          </div>
+        </div>
+        <main class="users">
+          <form
+            action="/admin/users/add-users"
+            method="post"
+            class="form-control d-flex flex-column gap-4 fs-3"
+          >
+          <% if(errors.length>0){ %> 
+
+            <% for(let i=0;i<errors.length;i++){%>
+             <% const e = errors[i] %>  
+        <p class="error-message"><%= e %> </p>
+        
+              <% } }%>
+            <label class="form-control fs-3" for="firstName">
+              Firstname
+              <input class="form-control fs-3" type="text" name="firstName" />
+            </label>
+
+            <label class="form-control fs-3" for="last-name">
+              Lastname
+              <input class="form-control fs-3" type="text" name="lastName" />
+            </label>
+
+            <label class="form-control fs-3" for="password">
+              Password
+              <input
+                class="form-control fs-3"
+                type="password"
+                name="password"
+              />
+            </label>
+
+            <label class="form-control fs-3" for="role">
+              Role
+              <input class="form-control fs-3" type="text" name="role" />
+            </label>
+            <div class="d-flex gap-4 fs-3">
+              <a class="btn btn-danger fs-3" href="/admin/users">Cancel</a>
+              <button class="btn btn-primary fs-3">Save</button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <script src="/admin/bootstrap-5.0.2-dist//js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/script.js"></script>
+  </body>
+</html>

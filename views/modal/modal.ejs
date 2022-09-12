@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/admin/style/modal-style.css" />
+    <title>Error Modal</title>
+  </head>
+
+  <body>
+    <div class="error-background">
+      <div class="error-body">
+        <% if(!errorInfo.error){ %>
+        <p class="error-message">
+          Kechirasiz qandaydir xatolik yuz berdi.Qayta urinib ko'ring yoki
+          adminstratsiyaga murojaat qiling
+        </p>
+
+        <% } %>
+        <h1 class="error-status"><%= errorInfo.status %></h1>
+        <h2 class="error-status-code"><%= errorInfo.statusCode %></h2>
+        <p class="error"><%= errorInfo.message %></p>
+        <% if(errorInfo.error&&errorInfo.stack){ %>
+        <p class="error-message"><%= errorInfo.error %></p>
+        <p class="error-stack"><%= errorInfo.stack %></p>
+        <% } %> <% else{ %>
+        <a href="/">Bosh sahifaga qaytish</a>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="/admin/bootstrap-5.0.2-dist//css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/admin/style/style.css" />
+  </head>
+
+  <body>
+    <div class="global-box">
+      <%- include("../../partials/sidebar") %>
+      <div class="main-box">
+        <div class="header"><%- include("../../partials/header-top") %></div>
+        <main class="categories">
+          <form
+            action="/admin/categories/new"
+            style="width: 50%; margin: 1rem 0; font-size: 2rem"
+            method="post"
+          >
+            <% if(errors.length>0){ %>
+            <h1><%= errors[i] %></h1>
+            <% } %>
+            <label class="form-control fs-3" for="name"
+              >New Category
+              <input
+                type="text"
+                class="form-control my-2 fs-3"
+                name="name"
+                placeholder="New Category"
+            /></label>
+            <div class="d-flex my-4">
+              <a class="btn btn-danger fs-3" href="/admin/categories">Cansel</a>
+              <button class="btn btn-success fs-3 mx-5">Save</button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <script src="/admin/bootstrap-5.0.2-dist//js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/script.js"></script>
+  </body>
+</html>

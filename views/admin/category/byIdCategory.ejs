@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="/admin/bootstrap-5.0.2-dist//css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/admin/style/style.css" />
+  </head>
+
+  <body>
+    <div class="global-box">
+      <%- include("../../partials/sidebar") %>
+      <div class="main-box">
+        <div class="header">
+          <%- include("../../partials/header-top") %>
+          <div class="header-bottom d-flex justify-content-end gap-5 zIndex">
+            <form class="d-flex justify-content-between gap-4" action="#">
+              <input type="search" name="" id="" class="form-control fs-4" />
+              <button class="btn btn-info fs-4">Search</button>
+            </form>
+            <a
+              href="/admin/categories/new"
+              class="btn btn-primary fs-4 text-decoration-none"
+              >Add Category</a
+            >
+          </div>
+        </div>
+        <main class="categories">
+          <table class="table table-striped fs-4">
+            <% if(errors.length>0){ %>
+              <h1><%= errors[i] %></h1>
+              <% } %>
+            <thead class="table-light">
+              <tr>
+                <th>Category Name</th>
+                <th>Category's News</th>
+                <th>Category's Users</th>
+                <th>Created At</th>
+                <th>Edit Category</th>
+                <th>Delete Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= byId.name %></td>
+                <td><a class="a-el btn btn-primary" href="#"> 5 </a></td>
+                <td><a class="a-el btn btn-primary" href="#"> 5 </a></td>
+                <td><%= byId.createdAt.toLocaleString() %></td>
+                <td>
+                  <a
+                    class="a-el btn btn-primary"
+                    href="/admin/categories/edit/<%= byId.id %> "
+                  >
+                    Edit
+                  </a>
+                </td>
+                <td>
+                  <a
+                    class="a-el btn btn-danger"
+                    href="/admin/categories/delete/<%= byId.id %> "
+                  >
+                    Delete
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+
+    <script src="/admin/bootstrap-5.0.2-dist//js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/script.js"></script>
+  </body>
+</html>

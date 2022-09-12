@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Detail</title>
+    <link rel="stylesheet" href="/news-blog/style/style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav-content">
+        <img src="/img/logo.png" alt="" class="nav__logo" />
+        <ul class="nav-list">
+          <% allCategories.forEach((c)=>{ %>
+          <li class="nav-list__item">
+            <a href="/news/<%= c.name %> /<%= c.id %> " class="nav-list__link"
+              ><%= c.name %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+        <button class="btn btn-search">
+          <ion-icon name="search-outline" class="btn-search-icon"></ion-icon>
+        </button>
+      </div>
+    </nav>
+    <div class="container">
+      <section class="news-section">
+        <div class="banner-img">
+          <img src="/uploader/<%= byIdNews.banner %>" alt="Img" />
+        </div>
+        <h1><%- byIdNews.title %></h1>
+        <div><%- byIdNews.brief %></div>
+        <div><%- byIdNews.text %></div>
+      </section>
+    </div>
+  </body>
+</html>
